@@ -38,7 +38,7 @@
        (let [id (edn/read-string id)]
          (resource
            :available-media-types ["application/edn"]
-           :allowed-methods [:get :put :delete]
+           :allowed-methods [:get :put]
            :handle-ok (fn [ctx]
                         (animals/read db/db id))
            :put! (fn [ctx]
@@ -47,7 +47,6 @@
                      {:name name :species species}))
            :new? false
            :respond-with-entity? true
-           :delete! (fn [ctx] (animals/delete! db/db id))
            :handle-exception handle-exception)))
 
   (GET "/greeting" []

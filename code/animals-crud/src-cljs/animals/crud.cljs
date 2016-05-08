@@ -26,13 +26,6 @@
             (<! (http/post "/animals" {:edn-params
                                        a}))]
         (swap! animals-state conj (:body response)))))
-
-(defn remove-animal! [a]
-  (go (let [response
-            (<! (http/delete (str "/animals/"
-                                  (:id a))))]
-        (if (= 200 (:status response))
-          (swap! animals-state remove-by-id (:id a))))))
  
 (defn update-animal! [a]
   (go (let [response
@@ -79,9 +72,7 @@
                            (update-animal! (current-animal)))
                          (swap! row-state update-in [:editing?] not))}
              (if (:editing? @row-state) "Save" "Edit")]]
-       [:td [:button.btn.pull-right.btn-danger
-             {:on-click #(remove-animal! (current-animal))}
-             "\u00D7"]]])))
+       ])))
 
 (defn animal-form []
   (let [initial-form-values {:name     ""

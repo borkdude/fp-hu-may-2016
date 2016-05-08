@@ -26,12 +26,6 @@
   [db id m]
   (jdbc/update! db :animals m ["id = ?" id]))
 
-(defn delete!
-  ([db]
-   (jdbc/execute! db ["delete from animals"]))
-  ([db id]
-   (jdbc/delete! db :animals ["id = ?" id])))
-
 (defn insert-samples! [db]
   (println "inserting some animals")
   (do
