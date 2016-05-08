@@ -1,5 +1,3 @@
-import Data.List
-       
 data Person = Person { firstname :: String
                      , lastname :: String } deriving (Show)
 
@@ -18,4 +16,9 @@ countTotalLengthOffirstNamesLongerThanFourCharacters persons =
       longerThan4 = filter (\name -> (length name) > 4) mapped
       totalLength = foldl (\acc name -> acc + length name) 0 filtered
   in totalLength
+  
+-- From the command line:
+-- $ ghci
+-- Prelude> :load haskell-example.hs
+     
 
