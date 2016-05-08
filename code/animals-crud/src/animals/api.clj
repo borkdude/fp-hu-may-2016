@@ -22,7 +22,7 @@
   (ANY "/animals"
        [name species]
        (resource
-        :available-media-types ["application/edn"]
+        :available-media-types ["application/edn" "application/json"]
         :allowed-methods [:get :post]
         :handle-ok (fn [ctx]
                      (let [found (animals/read db/db)]
